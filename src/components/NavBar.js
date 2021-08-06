@@ -4,19 +4,19 @@ const NavBar = ()=> {
         <div className="menu">
             <ul>
                 <li>
-                    <a>Inicio</a>
+                    <a href="#index">Inicio</a>
                 </li>
                 <li>
-                    <a>Nosotros</a>
+                    <a href="pages/nosotros.html">Nosotros</a>
                 </li>
                 <li>
-                    <a>Productos</a>
+                    <a href="pages/productos.html">Productos</a>
                 </li>
                 <li>
-                    <a>Preguntas Frecuentes</a>
+                    <a href="pages/preguntasfrecuentes.html">Preguntas Frecuentes</a>
                 </li>
                 <li>
-                    <a>Contacto</a>
+                    <a href="pages/contacto.html">Contacto</a>
                 </li>
             </ul>
         </div>
