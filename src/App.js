@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./styles.css"
 
-function App() {
-  return (
+import "./components/NavBar";
+import NavBar from "./components/NavBar";
+
+class App extends Component {
+  render (){
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Bienvenidos a Since 1981 - Fabricantes Textiles
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar />
     </div>
   );
+}
 }
 
 export default App;
