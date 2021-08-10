@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <div className="List-Container">
-          <ItemListContainer />
+          <ItemListContainer greeting="¡Somos fabricantes textiles!"/>
         </div>
         <div className="Cards-Container">
           <CardComponent
