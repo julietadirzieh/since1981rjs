@@ -1,0 +1,28 @@
+.List-Container{
+    padding: 10px;
+    margin: 0px;
+}
+
+.ItemCount-Container{
+    color: #1e3752;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.Cards-Container{
+    background: linear-gradient(to bottom, #d9d9d9, #fefefe);
+    margin: 0px;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px 40px;
+}
+
+
+
+
+
+  

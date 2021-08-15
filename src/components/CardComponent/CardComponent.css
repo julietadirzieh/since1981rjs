@@ -1,3 +1,11 @@
+.Card-Item {
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  background-color: #f8f8f8;
+  color: #1e3752;
+}
+
 .imgCard {
     max-width: 100%;
     width: 300px;

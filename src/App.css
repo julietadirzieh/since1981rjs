@@ -2,15 +2,6 @@
   text-align: center;
 }
 
-.Cards-Container{
-  background: linear-gradient(to bottom, #d9d9d9, #fefefe);
-  display:flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  padding: 40px;
-}
-
 .List-Container{
   background: linear-gradient(to bottom, #d9d9d9, #fefefe);
   color: #1e3762 !important;

@@ -5,7 +5,7 @@ nav{
     width: 100%;
     background: linear-gradient(to bottom, #1e3752, #2c5178);
     z-index: 1001;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 
 .imgLogo {

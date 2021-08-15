@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
-import "./CardComponent.css"
+import "./CardComponent.css";
 
 const CardComponent = ({ name, description, stock, img }) => (
-  <Card>
+  <Card className="Card-Item">
     <Image src={img} className="imgCard" alt="" wrapped ui={false} />
     <Card.Content>
       <Card.Header>{name}</Card.Header>

@@ -7,7 +7,6 @@ export class CartWidget extends Component {
     render() {
         return (
             <div className="CartWidget">
-                <Icon name='envelope outline' className="iconEnvelope" />
                 <Icon name="cart" className="iconCart" />
             </div>
         )

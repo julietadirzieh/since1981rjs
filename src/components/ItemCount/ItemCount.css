@@ -1,0 +1,11 @@
+.ItemCounter{
+  color: #1e3752;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 5px;
+}
+  
+.ItemCount-Btn{
+  size: small;
+  border-color: #1e3752;
+}
