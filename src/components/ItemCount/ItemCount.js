@@ -43,7 +43,7 @@ function ItemCount({ stock, initial, onAdd }) {
             <p><Button className="ItemCount-Btn" onClick={handleOnAdd}> Añadir al carrito </Button></p>
             <p>{stockItems} En stock</p>
             <div>
-                <p>¡Agregaste {onAddItems} productos al carrito!</p>
+                <p>¡Agregaste {onAddItems} productos a tu carrito!</p>
             </div>
         </div>
     );
