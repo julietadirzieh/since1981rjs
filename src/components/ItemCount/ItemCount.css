@@ -2,10 +2,20 @@
   color: #1e3752;
   align-items: center;
   text-align: center;
-  padding-bottom: 5px;
+  background-color: white;
+  padding-top: 20px;
+  border-top:#1e3752 0.1em dotted;
 }
   
 .ItemCount-Btn{
   size: small;
-  border-color: #1e3752;
+}
+
+.smallSize{
+  font-size: 10px;
+}
+
+.pInline{
+  display: inline-block;
+  padding: 8px;
 }

@@ -1,0 +1,20 @@
+.Item-Container {
+  height: 100%;
+  padding: 15px 15px 30px 15px;
+}
+
+.Card-Content{
+  color: #1e3752 !important;
+}
+.Card-Content--price{
+  color: #1e3752 !important;
+  padding-bottom: 10px;
+}
+
+.imgCard {
+  max-width: 100%;
+  width: 300px;
+  height: 150px;
+  cursor: pointer;
+  overflow: hidden;
+}

@@ -1,7 +1,5 @@
-import React from 'react';
-import { List } from 'semantic-ui-react';
-import "./ItemListContainer.css";
-import CardComponent from "../CardComponent/CardComponent";
+import React, { useState } from 'react';
+import { ItemList } from '../ItemList/ItemList';
 
 //para importar las imagenes que iran en las cards
 import rayados from "./img/rayados.jpg";
@@ -10,57 +8,34 @@ import batistaestampada from "./img/batistaestampada.jpg";
 import poplin from "./img/poplin.jpg";
 import simillino from "./img/simillino.jpg";
 
-//para importar el componente
-import ItemCount from '../ItemCount/ItemCount';
+const ItemListContainer = () => {
 
-const ItemListContainer = ({ greeting }) => (
-  <List className="List-Container">
-    <List.Item><h1>{greeting}</h1></List.Item>
-    <div className="ItemCount-Container">
-      <ItemCount
-        stock="5"
-        initial="0"
-        onAdd="0"
-      />
+  // estado donde voy a tener los items
+  const [items, setItems] = useState([]);
+
+  // promesa que devuelve un array con los items en tiempo diferido
+  const myPromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const items = [
+        { id: 1, title: "Batista Lisa", description: "67% Algodón - 33% Poliéster", price: 290, img: batistalisa, stock: 30 },
+        { id: 2, title: "Batista Estampada", description: "67% Algodón - 33% Poliéster", price: 350, img: batistaestampada, stock: 50 },
+        { id: 3, title: "Poplin", description: "98% Algodón - 2% Spandex", price: 440, img: poplin,  stock: 100 },
+        { id: 4, title: "Simil Lino", description: "98% Algodón - 2% Spandex", price: 440, img: simillino,  stock: 60 },
+        { id: 5, title: "Rayados", description: "98% Algodón - 2% Spandex", price: 490, img: rayados,  stock: 10 }
+      ];
+      resolve(items)
+    }, 2000)
+  });
+
+  myPromise.then((items) => setItems(items));
+
+  return (
+    <div className="ItemList-Container">
+      <ItemList items={items} />
     </div>
-    <div className="Cards-Container">
-      <CardComponent className="Card-Padding"
-        name="Batista Lisa"
-        description="67% Algodón - 33% Poliéster"
-        stock="Disponible en 10 colores."
-        img={batistalisa}
-      />
+  )
 
-      <CardComponent
-        name="Batista Estampada"
-        description="67% Algodón - 33% Poliéster"
-        stock="Muchas estampas y colores disponibles."
-        img={batistaestampada}
-      />
-
-      <CardComponent
-        name="Simil Lino"
-        description="100% Algodón"
-        stock="Línea Liviana y Rústica. Más de 20 colores en stock."
-        img={simillino}
-      />
-
-      <CardComponent
-        name="Poplin Elastizado Estampado"
-        description="98% Algodón - 2% Spandex"
-        stock="Muchas estampas y colores disponibles."
-        img={poplin}
-      />
-
-      <CardComponent
-        name="Rayados"
-        description="98% Algodón - 2% Spandex"
-        stock="Rígidos y Elastizados."
-        img={rayados}
-      />
-
-    </div>
-  </List>
-)
+};
 
 export default ItemListContainer;
+
