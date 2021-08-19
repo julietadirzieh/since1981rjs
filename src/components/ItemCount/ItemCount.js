@@ -8,11 +8,13 @@ function ItemCount({ stock, initial, onAdd }) {
     const [initialItems, setInitialItems] = useState(initial);
     // para declarar una variable de estado "onAdd"
     const [onAddItems, setOnAddItems] = useState(onAdd);
+    const onStock = stock - initialItems
 
     // para que al apretar +, disminuya el stock y aumente el initial
     const handleIncrement = () => {
         if (initialItems < stock) {
             setInitialItems(initialItems + 1);
+            console.log("Metros en stock: ", onStock);
         }
     }
 
@@ -20,6 +22,7 @@ function ItemCount({ stock, initial, onAdd }) {
     const handleDecrement = () => {
         if (initialItems > initial) {
             setInitialItems(initialItems - 1);
+            console.log("Metros en stock: ", onStock);
         }
     }
 
@@ -34,7 +37,6 @@ function ItemCount({ stock, initial, onAdd }) {
             <p className="pInline">{initialItems}</p> 
             <Button className="ItemCount-Btn" onClick={handleIncrement}>+</Button>
             <Button className="ItemCount-Btn" onClick={handleOnAdd}><CartWidget /> </Button>
-            <p className="smallSize">{stock - initialItems} metros en stock</p>
             <p>¡Agregaste {onAddItems} metros a tu carrito!</p>
         </div>
     );

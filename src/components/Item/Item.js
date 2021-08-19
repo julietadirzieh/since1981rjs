@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Image } from 'semantic-ui-react';
 import "./Item.css";
-import ItemCount from '../ItemCount/ItemCount';
 
 export const Item = ({ item }) => {
   return (
@@ -14,7 +13,6 @@ export const Item = ({ item }) => {
           <span>{item.description}</span>
         </Card.Meta>
         <Card.Description className="Card-Content--price">$ {item.price} el metro</Card.Description>
-        <ItemCount stock={item.stock} initial={1} onAdd={0}/>
       </Card.Content>
       </Card>
     </div>
