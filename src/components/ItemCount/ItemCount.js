@@ -34,7 +34,7 @@ function ItemCount({ stock, initial, onAdd }) {
     return (
         <div className="ItemCounter">
             <Button className="ItemCount-Btn" onClick={handleDecrement}>-</Button>
-            <p className="pInline">{initialItems}</p> 
+            <p className="pInline">{initialItems}</p>
             <Button className="ItemCount-Btn" onClick={handleIncrement}>+</Button>
             <Button className="ItemCount-Btn" onClick={handleOnAdd}><CartWidget /> </Button>
             <p>¡Agregaste {onAddItems} metros a tu carrito!</p>

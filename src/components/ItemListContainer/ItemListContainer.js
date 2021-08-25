@@ -1,41 +1,35 @@
-import React, { useState } from 'react';
-import { ItemList } from '../ItemList/ItemList';
+import React, { useState, useEffect } from 'react';
+import ItemList from '../ItemList/ItemList';
+import { useParams } from 'react-router-dom';
 
-//para importar las imagenes que iran en las cards
-import rayados from "./img/rayados.jpg";
-import batistalisa from "./img/batistalisa.jpg";
-import batistaestampada from "./img/batistaestampada.jpg";
-import poplin from "./img/poplin.jpg";
-import simillino from "./img/simillino.jpg";
+import itemsArray from "../../utils/items";
 
 const ItemListContainer = () => {
-
   // estado donde voy a tener los items
   const [items, setItems] = useState([]);
+  const {categoryId} = useParams();
 
   // promesa que devuelve un array con los items en tiempo diferido
-  const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const items = [
-        { id: 1, title: "Batista Lisa", description: "67% Algodón - 33% Poliéster", price: 290, img: batistalisa, stock: 30 },
-        { id: 2, title: "Batista Estampada", description: "67% Algodón - 33% Poliéster", price: 350, img: batistaestampada, stock: 50 },
-        { id: 3, title: "Poplin", description: "98% Algodón - 2% Spandex", price: 440, img: poplin,  stock: 100 },
-        { id: 4, title: "Simil Lino", description: "98% Algodón - 2% Spandex", price: 440, img: simillino,  stock: 60 },
-        { id: 5, title: "Rayados", description: "98% Algodón - 2% Spandex", price: 490, img: rayados,  stock: 10 }
-      ];
-      resolve(items)
-    }, 2000)
-  });
+  useEffect(()=>{
+  const promiseItems = new Promise((resolve, reject) => {
+      setTimeout(() => {    
+        categoryId ?
+        resolve(itemsArray.filter(e => e.category === categoryId))
+        : 
+        resolve(itemsArray)
+      }, 2000)
+    })
 
-  myPromise.then((items) => setItems(items));
+      promiseItems.then((itemsArray) => setItems(itemsArray));    
+    }, [categoryId]);
+  
 
-  return (
-    <div className="ItemList-Container">
-      <ItemList items={items} />
-    </div>
-  )
+    return (
+      <div>
+    <ItemList items={items}/>
+      </div>
+    );
+  };
 
-};
-
-export default ItemListContainer;
+  export default ItemListContainer;
 

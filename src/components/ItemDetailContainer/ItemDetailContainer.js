@@ -1,34 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-//para importar el componente ItemDetail
-import ItemDetail from "../ItemDetail/ItemDetail";
+import { useParams } from 'react-router-dom';
+import { ItemDetail } from "../ItemDetail/ItemDetail";
 
-//para importar las imagenes
-import batistalisa from "./img/batistalisa.jpg";
-import celeste from "./img/celeste.jpeg";
-import azul from "./img/azul.jpeg";
-import negro from "./img/negro.jpeg";
+import itemsArray from "../../utils/items";
 
-//poner promise
 function ItemDetailContainer() {
-  // estado donde voy a tener los items que quiero que me devuelva
-  const [getItems, setGetItems] = useState({});
 
-  // promesa que devuelve un array con los items en tiempo diferido
-  const myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const getItems =
-        { title: "Batista  Lisa", description: "67% Algodón - 33% Poliéster", price: 290, imgPort: batistalisa, img1: celeste, img2: azul, img3: negro, stock: 30, colors: "Blanco, rosa, celeste, mostaza, verde militar, azul marino, bordó melange, azul melange, gris melange y negro", designs: "Lisos" };
-      resolve(getItems)
-    }, 2000)
-  });
-  myPromise.then((getItems) => setGetItems(getItems));
+  const [getItems, setGetItems] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { itemId } = useParams();
+
+  useEffect(() => {
+    const getItemsPromise = new Promise((resolve, error) => {
+      setTimeout(() => {
+        const itemFound = itemsArray.find(
+          (item) => item.id === +itemId
+        );
+        resolve(itemFound);
+      }, 2000);
+    });
+
+    getItemsPromise
+    .then((itemsArray) => {
+      setGetItems(itemsArray);
+    })
+    .finally(() => setLoading(false));
+  }, [itemId]);
+
+  if (loading) return <h1>Loading...</h1>;
   
-  return (
-    <div className="ItemDetail-Container">
-      <ItemDetail getItems={getItems} />
-    </div>
-  )
+  return <ItemDetail getItems={getItems}/>
+
 };
 
 export default ItemDetailContainer;
