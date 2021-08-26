@@ -10,10 +10,6 @@
   size: small;
 }
 
-.smallSize{
-  font-size: 10px;
-}
-
 .pInline{
   display: inline-block;
   padding: 8px;

@@ -4,13 +4,11 @@ import { Button } from 'semantic-ui-react';
 import CartWidget from '../CartWidget/CartWidget';
 
 function ItemCount({ stock, initial, onAdd }) {
-    // para declarar una variable de estado "initial"
+
     const [initialItems, setInitialItems] = useState(initial);
-    // para declarar una variable de estado "onAdd"
     const [onAddItems, setOnAddItems] = useState(onAdd);
     const onStock = stock - initialItems
 
-    // para que al apretar +, disminuya el stock y aumente el initial
     const handleIncrement = () => {
         if (initialItems < stock) {
             setInitialItems(initialItems + 1);
@@ -18,7 +16,6 @@ function ItemCount({ stock, initial, onAdd }) {
         }
     }
 
-    // para que al apretar -, aumente el stock y reduzca el initial
     const handleDecrement = () => {
         if (initialItems > initial) {
             setInitialItems(initialItems - 1);
@@ -26,7 +23,6 @@ function ItemCount({ stock, initial, onAdd }) {
         }
     }
 
-    // para agregar al carrito, los productos seleccionados por el usuario
     const handleOnAdd = () => {
         setOnAddItems(onAddItems + initialItems);
     }

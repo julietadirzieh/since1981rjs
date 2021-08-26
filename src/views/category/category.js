@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
+import "./category.css";
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 
-const category = ({match}) => {
+const category = () => {
 
-let itemID = match.params.id;
-
-return (
-        <div>
-            {itemID}
-        </div>
+    return (
+        <div className="ItemList-Container">
+            <ItemListContainer />
+        </div >
     )
 }
 

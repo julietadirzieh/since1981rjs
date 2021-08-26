@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from "../ItemDetail/ItemDetail";
-
-import itemsArray from "../../utils/items";
+import itemsArray from "../../utils/itemsArray";
 
 function ItemDetailContainer() {
 
@@ -22,15 +20,15 @@ function ItemDetailContainer() {
     });
 
     getItemsPromise
-    .then((itemsArray) => {
-      setGetItems(itemsArray);
-    })
-    .finally(() => setLoading(false));
+      .then((itemsArray) => {
+        setGetItems(itemsArray);
+      })
+      .finally(() => setLoading(false));
   }, [itemId]);
 
   if (loading) return <h1>Loading...</h1>;
-  
-  return <ItemDetail getItems={getItems}/>
+
+  return <ItemDetail getItems={getItems} />
 
 };
 

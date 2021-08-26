@@ -7,7 +7,7 @@ import "./Item.css";
 
 export const Item = ({ item }) => {
   return (
-    <Link to={`/detail/${item.id}`} active>
+    <Link to={`/item/${item.id}`} active>
       <div className="Item-Container">
         <Card>
           <Image src={item.img} className="imgCard" alt="" />

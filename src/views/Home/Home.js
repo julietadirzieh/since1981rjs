@@ -1,8 +1,12 @@
 import React from "react";
+import "./Home.css";
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 
 const Home = () => {
     return (
-        <div></div>
+        <div className="ItemList-Container">
+            <ItemListContainer />
+        </div >
     );
 }
 
