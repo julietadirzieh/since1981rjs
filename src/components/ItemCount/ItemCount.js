@@ -5,35 +5,32 @@ import CartWidget from '../CartWidget/CartWidget';
 
 function ItemCount({ stock, initial, onAdd }) {
 
-    const [initialItems, setInitialItems] = useState(initial);
-    const [onAddItems, setOnAddItems] = useState(onAdd);
-    const onStock = stock - initialItems
+    const [count, setCount] = useState(initial);
+    const onStock = stock - count;
 
     const handleIncrement = () => {
-        if (initialItems < stock) {
-            setInitialItems(initialItems + 1);
-            console.log("Metros en stock: ", onStock);
+        if (count < stock) {
+            setCount(count + 1);
         }
-    }
+    };
 
     const handleDecrement = () => {
-        if (initialItems > initial) {
-            setInitialItems(initialItems - 1);
-            console.log("Metros en stock: ", onStock);
+        if (count > 0) {
+            setCount(count - 1);
         }
-    }
+    };
 
-    const handleOnAdd = () => {
-        setOnAddItems(onAddItems + initialItems);
+    const onAddClick = () => {
+        onAdd(count);
+        console.log("Metros en stock: ", onStock);
     }
 
     return (
         <div className="ItemCounter">
             <Button className="ItemCount-Btn" onClick={handleDecrement}>-</Button>
-            <p className="pInline">{initialItems}</p>
+            <p className="pInline">{count}</p>
             <Button className="ItemCount-Btn" onClick={handleIncrement}>+</Button>
-            <Button className="ItemCount-Btn" onClick={handleOnAdd}><CartWidget /> </Button>
-            <p>¡Agregaste {onAddItems} metros a tu carrito!</p>
+            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget /></Button>
         </div>
     );
 };

@@ -1,9 +1,17 @@
-import React from "react";
-import { Message } from 'semantic-ui-react';
+import React, { useState } from "react";
+import { Message, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import "./ItemDetail.css";
 import ItemCount from '../ItemCount/ItemCount';
 
 export function ItemDetail({ getItems }) {
+
+    const [onAddClick, setOnAddClick] = useState(0);
+
+    const onAdd = (quantityToAdd) => {
+        setOnAddClick(quantityToAdd);
+    }
+
     return (
         <div>
             <Message>
@@ -23,7 +31,14 @@ export function ItemDetail({ getItems }) {
                             <Message.Item>Variantes: {getItems.designs}.</Message.Item>
                         </Message.List>
                         <Message>$ {getItems.price} el metro. Fraccionamos un mínimo de 10 metros por corte.</Message>
-                        <ItemCount stock={getItems.stock} initial={1} onAdd={0} />
+                        {onAddClick ? (
+                            <Link to="/cart">
+                                <p>Agregaste {onAddClick} metros al carrito.</p>
+                                <Button>Termina tu compra</Button>
+                            </Link>
+                        ) : (
+                            <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
+                        )}
                     </div>
                 </div>
             </Message>
