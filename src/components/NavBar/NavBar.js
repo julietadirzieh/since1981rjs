@@ -17,7 +17,7 @@ const NavBar = () => {
             </Link>
             <nav>
                 <ul>
-                    <Link className="sectionLink" activeclassname="activeLink" exact to="/">
+                    <Link className="sectionLink" activeclassname="activeLink" to="/">
                         <li>Inicio</li>
                     </Link>
                     <Link className="sectionLink" activeclassname="activeLink" to="/about">
