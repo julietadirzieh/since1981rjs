@@ -1,7 +1,7 @@
 import React from "react";
 import "./FAQs.css";
 
-const FAQs = () => {
+export const FAQs = () => {
   return (
     <div className="FAQs-Container">
       <h1 className="FAQs-Title">PREGUNTAS FRECUENTES</h1>
@@ -17,6 +17,4 @@ const FAQs = () => {
       </ul>
     </div>
   );
-}
-
-export default FAQs;
+};

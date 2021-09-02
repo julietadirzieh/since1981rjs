@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import "./ItemDetail.css";
-import ItemCount from '../ItemCount/ItemCount';
+import { ItemCount } from '../ItemCount/ItemCount';
+
+import { useCartContext } from '../../CartContext';
 
 export function ItemDetail({ getItems }) {
 
-    const [onAddClick, setOnAddClick] = useState(0);
+    const { cart, addItem, removeItem, clear } = useCartContext();
 
     const onAdd = (quantityToAdd) => {
-        setOnAddClick(quantityToAdd);
+        addItem(getItems, quantityToAdd);
     }
+
+    console.log("Esto es lo seleccionado por el usuario: ", cart)
 
     return (
         <div>
@@ -31,19 +35,15 @@ export function ItemDetail({ getItems }) {
                             <Message.Item>Variantes: {getItems.designs}.</Message.Item>
                         </Message.List>
                         <Message>$ {getItems.price} el metro. Fraccionamos un mínimo de 10 metros por corte.</Message>
-                        {onAddClick ? (
-                            <Link to="/cart">
-                                <p>Agregaste {onAddClick} metros al carrito.</p>
-                                <Button>Termina tu compra</Button>
-                            </Link>
-                        ) : (
-                            <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
-                        )}
+                        <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
+                        <Button onClick={clear}>Vaciar carrito</Button>
+                        <Button onClick={removeItem}>Eliminar Item</Button>
+                        <Link to="/cart">
+                            <Button>Termina tu compra</Button>
+                        </Link>
                     </div>
                 </div>
             </Message>
         </div>
     )
-}
-
-export default ItemDetail;
+};

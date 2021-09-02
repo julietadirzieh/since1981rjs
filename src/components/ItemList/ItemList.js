@@ -2,7 +2,7 @@ import React from 'react';
 import "./ItemList.css";
 import { Item } from '../Item/Item';
 
-const ItemList = (props) => {
+export const ItemList = (props) => {
 
     return (
         <div className="ItemList-Container">
@@ -17,5 +17,3 @@ const ItemList = (props) => {
         </div>
     )
 };
-
-export default ItemList;

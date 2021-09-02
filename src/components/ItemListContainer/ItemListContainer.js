@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import ItemList from '../ItemList/ItemList';
+import {ItemList} from '../ItemList/ItemList';
 import { useParams } from 'react-router-dom';
 import itemsArray from "../../utils/itemsArray";
 
-const ItemListContainer = () => {
+export const ItemListContainer = () => {
 
   const [items, setItems] = useState([]);
   const { categoryId } = useParams();
@@ -29,5 +29,4 @@ const ItemListContainer = () => {
   );
 };
 
-export default ItemListContainer;
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Contact.css";
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <div className="Contact-Container">
       <h1>CONTACTO</h1>
@@ -9,6 +9,4 @@ const Contact = () => {
       <p>Lunes a Viernes de 10 a 16hs</p>
     </div>
   );
-}
-
-export default Contact;
+};

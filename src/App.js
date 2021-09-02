@@ -2,17 +2,20 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
-import NavBar from "./components/NavBar/NavBar";
-import Home from "./views/Home/Home";
-import About from "./views/About/About";
-import FAQs from "./views/FAQs/FAQs";
-import Contact from "./views/Contact/Contact";
-import category from "./views/category/category";
-import item from "./views/item/item";
-import Footer from "./components/Footer/Footer";
+import { NavBar } from "./components/NavBar/NavBar";
+import { Home } from "./views/Home/Home";
+import { About } from "./views/About/About";
+import { FAQs } from "./views/FAQs/FAQs";
+import { Contact } from "./views/Contact/Contact";
+import { category } from "./views/category/category";
+import { item } from "./views/item/item";
+import { Footer } from "./components/Footer/Footer";
+
+import { CartProvider } from './CartContext';
 
 const App = () => {
   return (
+    <CartProvider>
     <Router>
       <div className="App">
         <NavBar />
@@ -27,6 +30,7 @@ const App = () => {
         <Footer />
       </div >
     </Router>
+    </CartProvider>
   );
 }
 

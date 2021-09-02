@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import logo from "./logo.png";
 
 //para importar los componentes
-import CartWidget from '../../components/CartWidget/CartWidget';
+import { CartWidget } from '../../components/CartWidget/CartWidget';
 
-const NavBar = () => {
+export const NavBar = () => {
     return (
         <header>
             <Link to='/'>
@@ -45,9 +45,8 @@ const NavBar = () => {
             </div>
         </header>
     )
-}
+};
 
-export default NavBar;
 
 
 

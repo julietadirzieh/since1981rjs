@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import itemsArray from "../../utils/itemsArray";
 
-function ItemDetailContainer() {
+export function ItemDetailContainer() {
 
   const [getItems, setGetItems] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,5 +31,3 @@ function ItemDetailContainer() {
   return <ItemDetail getItems={getItems} />
 
 };
-
-export default ItemDetailContainer;

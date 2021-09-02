@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import "./ItemCount.css";
 import { Button } from 'semantic-ui-react';
-import CartWidget from '../CartWidget/CartWidget';
+import { CartWidget } from '../CartWidget/CartWidget';
 
-function ItemCount({ stock, initial, onAdd }) {
+export function ItemCount({ stock, initial, onAdd }) {
 
     const [count, setCount] = useState(initial);
     const onStock = stock - count;
@@ -22,19 +22,20 @@ function ItemCount({ stock, initial, onAdd }) {
 
     const onAddClick = () => {
         onAdd(count);
+        setCount(1);
         console.log("Metros en stock: ", onStock);
     }
 
     return (
         <div className="ItemCounter">
-            <Button className="ItemCount-Btn" onClick={handleDecrement}>-</Button>
+            <Button onClick={handleDecrement}>-</Button>
             <p className="pInline">{count}</p>
-            <Button className="ItemCount-Btn" onClick={handleIncrement}>+</Button>
-            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget /></Button>
+            <Button onClick={handleIncrement}>+</Button>
+            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget /> Agregar </Button>
+            <p></p>
         </div>
     );
 };
 
-export default ItemCount;
 
 

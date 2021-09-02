@@ -1,10 +1,14 @@
 import { Icon } from 'semantic-ui-react';
+import { useCartContext } from '../../CartContext';
 
-const CartWidget = () => {
+export const CartWidget = () => {
+
+    const { totalItems } = useCartContext();
+
     return (
         <div>
-        <Icon name="cart" color="grey" size="large" className="IconCart"/>
+            {totalItems}
+            <Icon name="cart" color="grey" size="large" className="IconCart" />
         </div>
     )
 };
-export default CartWidget;
