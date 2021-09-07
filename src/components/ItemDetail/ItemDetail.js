@@ -4,17 +4,15 @@ import { Link } from 'react-router-dom';
 import "./ItemDetail.css";
 import { ItemCount } from '../ItemCount/ItemCount';
 
-import { useCartContext } from '../../CartContext';
+import { useCartContext } from '../../Context/CartContext';
 
 export function ItemDetail({ getItems }) {
 
-    const { cart, addItem, removeItem, clear } = useCartContext();
+    const { addItem, removeItem, clear } = useCartContext();
 
     const onAdd = (quantityToAdd) => {
         addItem(getItems, quantityToAdd);
     }
-
-    console.log("Esto es lo seleccionado por el usuario: ", cart)
 
     return (
         <div>
@@ -34,13 +32,15 @@ export function ItemDetail({ getItems }) {
                             <Message.Item>Colores disponibles: {getItems.colors}.</Message.Item>
                             <Message.Item>Variantes: {getItems.designs}.</Message.Item>
                         </Message.List>
-                        <Message>$ {getItems.price} el metro. Fraccionamos un mínimo de 10 metros por corte.</Message>
+                        <Message>$ {getItems.price} el metro.Fraccionamos un mínimo de 10 metros por corte.</Message>
                         <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
                         <Button onClick={clear}>Vaciar carrito</Button>
                         <Button onClick={removeItem}>Eliminar Item</Button>
-                        <Link to="/cart">
-                            <Button>Termina tu compra</Button>
-                        </Link>
+                        <div>
+                            <Link to="/cart">
+                                <Button>Terminar tu compra</Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </Message>

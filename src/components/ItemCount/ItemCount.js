@@ -6,7 +6,6 @@ import { CartWidget } from '../CartWidget/CartWidget';
 export function ItemCount({ stock, initial, onAdd }) {
 
     const [count, setCount] = useState(initial);
-    const onStock = stock - count;
 
     const handleIncrement = () => {
         if (count < stock) {
@@ -23,7 +22,6 @@ export function ItemCount({ stock, initial, onAdd }) {
     const onAddClick = () => {
         onAdd(count);
         setCount(1);
-        console.log("Metros en stock: ", onStock);
     }
 
     return (
@@ -31,7 +29,7 @@ export function ItemCount({ stock, initial, onAdd }) {
             <Button onClick={handleDecrement}>-</Button>
             <p className="pInline">{count}</p>
             <Button onClick={handleIncrement}>+</Button>
-            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget /> Agregar </Button>
+            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget />Agregar </Button>
             <p></p>
         </div>
     );

@@ -1,11 +1,7 @@
 import React from 'react';
 import "./NavBar.css";
-import { Link } from 'react-router-dom';
-
-//para importar el logo
 import logo from "./logo.png";
-
-//para importar los componentes
+import { Link } from 'react-router-dom';
 import { CartWidget } from '../../components/CartWidget/CartWidget';
 
 export const NavBar = () => {
