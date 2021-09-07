@@ -35,7 +35,7 @@ export function ItemDetail({ getItems }) {
                         <Message>$ {getItems.price} el metro.Fraccionamos un mínimo de 10 metros por corte.</Message>
                         <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
                         <Button onClick={clear}>Vaciar carrito</Button>
-                        <Button onClick={removeItem}>Eliminar Item</Button>
+                        <Button onClick={() => removeItem(getItems.id)}>Eliminar Item</Button>
                         <div>
                             <Link to="/cart">
                                 <Button>Terminar tu compra</Button>
