@@ -6,36 +6,36 @@ import { ItemCount } from '../ItemCount/ItemCount';
 
 import { useCartContext } from '../../Context/CartContext';
 
-export function ItemDetail({ getItems }) {
+export function ItemDetail({ item }) {
 
     const { addItem, removeItem, clear } = useCartContext();
 
     const onAdd = (quantityToAdd) => {
-        addItem(getItems, quantityToAdd);
+        addItem(item, quantityToAdd);
     }
 
     return (
         <div>
             <Message>
-                <h1 className="ItemDetail-Title">{getItems.title}</h1>
+                <h1 className="ItemDetail-Title">{item.title}</h1>
                 <div className="ItemDetailMessage">
                     <div className="ImgsDetail">
-                        <img src={getItems.img1} className="imgItemDetail" alt="" />
-                        <img src={getItems.img2} className="imgItemDetail" alt="" />
-                        <img src={getItems.img3} className="imgItemDetail" alt="" />
+                        <img src={item.img1} className="imgItemDetail" alt="" />
+                        <img src={item.img2} className="imgItemDetail" alt="" />
+                        <img src={item.img3} className="imgItemDetail" alt="" />
                     </div>
                     <div className="ItemDetail">
-                        <img src={getItems.img} className="imgItemDetail--port" alt=""></img>
-                        <Message.Header>{getItems.title}</Message.Header>
+                        <img src={item.img} className="imgItemDetail--port" alt=""></img>
+                        <Message.Header>{item.title}</Message.Header>
                         <Message.List className="listFlex">
-                            <Message.Item>{getItems.description}</Message.Item>
-                            <Message.Item>Colores disponibles: {getItems.colors}.</Message.Item>
-                            <Message.Item>Variantes: {getItems.designs}.</Message.Item>
+                            <Message.Item>{item.description}</Message.Item>
+                            <Message.Item>Colores disponibles: {item.colors}.</Message.Item>
+                            <Message.Item>Variantes: {item.designs}.</Message.Item>
                         </Message.List>
-                        <Message>$ {getItems.price} el metro.Fraccionamos un mínimo de 10 metros por corte.</Message>
-                        <ItemCount stock={getItems.stock} initial={1} onAdd={onAdd} />
+                        <Message>$ {item.price} el metro.Fraccionamos un mínimo de 10 metros por corte.</Message>
+                        <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
                         <Button onClick={clear}>Vaciar carrito</Button>
-                        <Button onClick={() => removeItem(getItems.id)}>Eliminar Item</Button>
+                        <Button onClick={() => removeItem(item.id)}>Eliminar Item</Button>
                         <div>
                             <Link to="/cart">
                                 <Button>Terminar tu compra</Button>

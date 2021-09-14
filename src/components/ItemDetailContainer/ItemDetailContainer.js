@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
 import { ItemDetail } from "../ItemDetail/ItemDetail";
-import itemsArray from "../../utils/itemsArray";
+import { db } from "../../firebase"
+import { collection, query, getDocs } from "firebase/firestore";
 
-export function ItemDetailContainer() {
+export const ItemDetailContainer = () => {
 
-  const [getItems, setGetItems] = useState(null);
+  const [itemDetail, setItemDetail] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { itemId } = useParams();
+
+  console.log("itemdet", itemDetail);
+
+  const getItemDetail = async () => {
+    const docs = [];
+    const q = query(collection(db, "items"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      docs.push({ ...doc.data(), id: doc.id });
+    });
+    setItemDetail(docs);
+  };
 
   useEffect(() => {
-    const getItemsPromise = new Promise((resolve, error) => {
-      setTimeout(() => {
-        const itemFound = itemsArray.find(
-          (item) => item.id === +itemId
-        );
-        resolve(itemFound);
-      }, 2000);
-    });
-
-    getItemsPromise
-      .then((itemsArray) => {
-        setGetItems(itemsArray);
-      })
-      .finally(() => setLoading(false));
-  }, [itemId]);
+    getItemDetail()
+    .finally(() => setLoading(false));
+  }, []);
 
   if (loading) return <h1>Loading...</h1>;
 
-  return <ItemDetail getItems={getItems} />
+  return (
+    <div>
+      {itemDetail.map((item)=> {
+        return<ItemDetail item={item} key={item.id} />}) 
+      } 
+    </div>
+  )
 
 };

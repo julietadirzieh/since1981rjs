@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "./ItemCount.css";
-import { Button } from 'semantic-ui-react';
-import { CartWidget } from '../CartWidget/CartWidget';
+import { Button, Message } from 'semantic-ui-react';
 
 export function ItemCount({ stock, initial, onAdd }) {
 
@@ -29,7 +28,17 @@ export function ItemCount({ stock, initial, onAdd }) {
             <Button onClick={handleDecrement}>-</Button>
             <p className="pInline">{count}</p>
             <Button onClick={handleIncrement}>+</Button>
-            <Button className="ItemCount-Btn" onClick={onAddClick}><CartWidget />Agregar </Button>
+            <Button className="ItemCount-Btn" onClick={onAddClick}>Agregar</Button>
+
+            {(count !== initial) ? (
+                <Message
+                    success
+                    header='¡Los metros fueron agregados exitosamente!'
+                    content='Podés volver a Inicio para agregar metros de otras telas.'
+                />
+            ) : (
+                <></>
+            )}
             <p></p>
         </div>
     );

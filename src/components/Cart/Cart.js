@@ -15,8 +15,8 @@ export const Cart = () => {
                     <Button className="CartBtn2" onClick={clear}>Vaciar carrito</Button>
                     {cart.map((item) => {
                         return (
-                            <div className="CartMessage">
-                                <Message>
+                            <div className="CartMessage" >
+                                <Message key={item.id} >
                                     <h2 className="pInlineCart">{item.title}</h2>
                                     <h4 className="pInlineCart">{item.quantity} metros</h4>
                                     <h4 className="pInlineCart">$ {item.price} por metro</h4>
