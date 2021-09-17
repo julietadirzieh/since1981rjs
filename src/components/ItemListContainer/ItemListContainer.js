@@ -2,38 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { ItemList } from '../ItemList/ItemList';
 import { db } from "../../firebase"
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { useParams } from 'react-router-dom';
 
 export const ItemListContainer = () => {
 
   const [items, setItems] = useState([]);
-
-  const getItems = async () => {
-    const docs = [];
-    const q = query(collection(db, "items"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), id: doc.id });
-    });
-    setItems(docs);
-  };
+  const { categoryId } = useParams();
 
   useEffect(() => {
-    getItems();
-  }, []);
+    getFilteredItems(categoryId);
+  }, [categoryId]);
 
-  const getLisasCategory = async () => {
-    const docs = [];
-    const q = query(collection(db, "items"), where("categoryId", "==", "lisas"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), id: doc.id });
-    });
-    setItems(docs);
+  const queryBuilder = (category, id) => {
+    if (category) {
+      return query(collection(db, "items"), where("categoryId", "==", category.toLowerCase()));
+    } else {
+      return query(collection(db, "items"));
+    }
   };
 
-  const getEstampadasCategory = async () => {
+  const getFilteredItems = async (category) => {
     const docs = [];
-    const q = query(collection(db, "items"), where("categoryId", "==", "estampadas"));
+    const q = queryBuilder(category);
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id });
@@ -43,8 +33,6 @@ export const ItemListContainer = () => {
 
   return (
     <div>
-      <button onClick={getLisasCategory}>Telas lisas</button>
-      <button onClick={getEstampadasCategory}>Telas estampadas</button>
       <ItemList items={items} />
     </div>
   )

@@ -11,6 +11,7 @@ import { category } from "./views/category/category";
 import { item } from "./views/item/item";
 import { Footer } from "./components/Footer/Footer";
 import { cart } from "./views/cart/cart";
+import { Orders } from "./views/Orders/Orders";
 
 import { CartProvider } from './Context/CartContext';
 
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/category/:categoryId" component={category} />
           <Route path="/item/:itemId" component={item} />
           <Route path="/cart" component={cart} />
+          <Route path="/Orders" component={Orders} />
         </Switch>
         <Footer />
       </div >

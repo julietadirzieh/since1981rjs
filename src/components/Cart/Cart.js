@@ -32,7 +32,9 @@ export const Cart = () => {
                     </div>
                     <div className="CartBtn1">
                         <h1>Total: $ {totalPrice}</h1>
+                        <Link to="/Orders">
                         <Button>Iniciar compra</Button>
+                        </Link>
                         <Link to="/">
                             <p>Ver más telas</p>
                         </Link>

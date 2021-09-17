@@ -1,0 +1,12 @@
+.formSection{
+    margin: 0px;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    background: linear-gradient(to bottom, #d9d9d9, #fefefe);
+    width: 100%;
+    padding: 60px;
+  }
