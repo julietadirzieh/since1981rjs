@@ -30,7 +30,6 @@ export const Orders = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         // const buyerInfo = buyer.toLowerCase().replace(/ /g, "");
-        console.log("Los datos de las personas", buyer);
     };
 
     const items = cart;
