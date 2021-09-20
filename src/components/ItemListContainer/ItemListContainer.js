@@ -7,10 +7,12 @@ import { useParams } from 'react-router-dom';
 export const ItemListContainer = () => {
 
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
   useEffect(() => {
-    getFilteredItems(categoryId);
+    getFilteredItems(categoryId)
+      .finally(() => setLoading(false));
   }, [categoryId]);
 
   const queryBuilder = (category, id) => {
@@ -31,9 +33,11 @@ export const ItemListContainer = () => {
     setItems(docs);
   };
 
+  if (loading) return <h1>Loading...</h1>;
+
   return (
     <div>
-      <ItemList items={items} />
+      <ItemList items={items} key={items.id}/>
     </div>
   )
 
