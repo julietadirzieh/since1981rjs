@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Message, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import "./ItemDetail.css";
 import { ItemCount } from '../ItemCount/ItemCount';
-
 import { useCartContext } from '../../Context/CartContext';
 
 export function ItemDetail({ item }) {
+
+    const [added, setAdded] = useState(false);
 
     const { addItem, removeItem, clear } = useCartContext();
 
     const onAdd = (quantityToAdd) => {
         addItem(item, quantityToAdd);
+        setAdded(true)
     }
 
     return (
@@ -32,8 +34,17 @@ export function ItemDetail({ item }) {
                             <Message.Item>Colores disponibles: {item.colors}.</Message.Item>
                             <Message.Item>Variantes: {item.designs}.</Message.Item>
                         </Message.List>
-                        <Message>$ {item.price} el metro.Fraccionamos un mínimo de 10 metros por corte.</Message>
+                        <Message>$ {item.price} el metro.</Message>
                         <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                        {added ? (
+                            <Message
+                                success
+                                header='¡Los metros fueron agregados exitosamente!'
+                                content='Podés volver a Inicio para agregar metros de otras telas.'
+                            />
+                        ) : (
+                            <></>
+                        )}
                         <Button onClick={clear}>Vaciar carrito</Button>
                         <Button onClick={() => removeItem(item.id)}>Eliminar Item</Button>
                         <div>

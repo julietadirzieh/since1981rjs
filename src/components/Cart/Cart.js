@@ -15,8 +15,8 @@ export const Cart = () => {
                     <Button className="CartBtn2" onClick={clear}>Vaciar carrito</Button>
                     {cart.map((item) => {
                         return (
-                            <div className="CartMessage" >
-                                <Message key={item.id} >
+                            <div className="CartMessage" key={item.id}>
+                                <Message>
                                     <h2 className="pInlineCart">{item.title}</h2>
                                     <h4 className="pInlineCart">{item.quantity} metros</h4>
                                     <h4 className="pInlineCart">$ {item.price} por metro</h4>
@@ -32,7 +32,7 @@ export const Cart = () => {
                     </div>
                     <div className="CartBtn1">
                         <h1>Total: $ {totalPrice}</h1>
-                        <Link to="/Orders">
+                        <Link to="/order">
                         <Button>Iniciar compra</Button>
                         </Link>
                         <Link to="/">

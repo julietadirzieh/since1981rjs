@@ -11,29 +11,31 @@ import { category } from "./views/category/category";
 import { item } from "./views/item/item";
 import { Footer } from "./components/Footer/Footer";
 import { cart } from "./views/cart/cart";
-import { Orders } from "./views/Orders/Orders";
+import { order } from "./views/order/order";
+import { Error404 } from "./views/Error404/Error404";
 
 import { CartProvider } from './Context/CartContext';
 
 const App = () => {
   return (
     <CartProvider>
-    <Router>
-      <div className="App">
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/FAQs" component={FAQs} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/category/:categoryId" component={category} />
-          <Route path="/item/:itemId" component={item} />
-          <Route path="/cart" component={cart} />
-          <Route path="/Orders" component={Orders} />
-        </Switch>
-        <Footer />
-      </div >
-    </Router>
+      <Router>
+        <div className="App">
+          <NavBar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/FAQs" component={FAQs} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/category/:categoryId" component={category} />
+            <Route path="/item/:itemId" component={item} />
+            <Route path="/cart" component={cart} />
+            <Route path="/order" component={order} />
+            <Route component={Error404} />
+          </Switch>
+          <Footer />
+        </div >
+      </Router>
     </CartProvider>
   );
 }

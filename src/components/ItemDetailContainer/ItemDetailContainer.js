@@ -11,8 +11,10 @@ export const ItemDetailContainer = () => {
   const { itemId } = useParams();
 
   useEffect(() => {
-    getFilteredItem(itemId)
-      .finally(() => setLoading(false));
+    setTimeout(() => {
+      getFilteredItem(itemId)
+        .finally(() => setLoading(false));
+    }, 2000)
   }, [itemId]);
 
   const getFilteredItem = async (id) => {

@@ -11,8 +11,10 @@ export const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    getFilteredItems(categoryId)
-      .finally(() => setLoading(false));
+    setTimeout(() => {
+      getFilteredItems(categoryId)
+        .finally(() => setLoading(false))
+    }, 2000)
   }, [categoryId]);
 
   const queryBuilder = (category, id) => {
@@ -37,7 +39,7 @@ export const ItemListContainer = () => {
 
   return (
     <div>
-      <ItemList items={items} key={items.id}/>
+      <ItemList items={items} key={items.id} />
     </div>
   )
 
