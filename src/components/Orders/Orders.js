@@ -15,8 +15,7 @@ export const Orders = () => {
     const [email, setEmail] = useState("");
     const [emailConfirm, setEmailConfirm] = useState("");
     const [phone, setPhone] = useState("");
-    const [loading, setLoading] = useState(true);
-    const [orderId, setOrderId] = useState(false);
+    const [orderId, setOrderId] = useState("");
 
     const handleOnChange = (e) => {
         e.preventDefault();
@@ -74,24 +73,20 @@ export const Orders = () => {
         },
     };
 
-    const ref = collection(db, "orders").withConverter(orderConverter);
-
     const addProduct = async (e) => {
         e.preventDefault();
-        await addDoc(ref, new Order(buyer, items, actualDate, totalPrice));
-        onSnapshot(ref, (querySnapshot) => {
+        await addDoc(collection(db, "orders").withConverter(orderConverter), new Order(buyer, items, actualDate, totalPrice));
+        onSnapshot(collection(db, "orders").withConverter(orderConverter), (querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 setOrderId(doc.id)
                 clear()
-                setLoading(false);
             });
-            if (loading) return <h1>Loading...</h1>;
         });
     };
 
     return (
         <div className="ItemList-Container">
-            {orderId ? (<div>
+            {(orderId !== "") ? (<div>
                 <Message className="CartMessage">
                     <h3>Se ha generado la Orden N° {orderId} exitosamente.</h3>
                     <h4>¡Muchas gracias!</h4>
@@ -105,8 +100,8 @@ export const Orders = () => {
                     <h1>Resumen de Compra</h1>
                     {cart.map((item) => {
                         return (
-                            <div className="CartMessage" >
-                                <Message key={item.id} >
+                            <div className="CartMessage" key={item.id} >
+                                <Message >
                                     <h2 className="pInlineCart">{item.title}</h2>
                                     <h4 className="pInlineCart">{item.quantity} metros</h4>
                                     <h4 className="pInlineCart">$ {item.price} por metro</h4>

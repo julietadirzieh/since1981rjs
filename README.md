@@ -8,4 +8,4 @@ En la página principal se puede ver el catálogo de las telas que se venden y n
 
 La app se va a levantar en el puerto http://localhost:3000
 
-##Se implementaron dependencias como Semantic UI para la construcción de componentes reutilizables y no perder el foco en el css y velar por la funcionalidad del proyecto.
+##Se implementó la dependencia Semantic UI para la construcción de componentes reutilizables y no perder el foco en el css y velar por la funcionalidad del proyecto.
