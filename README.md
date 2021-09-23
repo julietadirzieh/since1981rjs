@@ -12,4 +12,4 @@ La app se va a levantar en el puerto http://localhost:3000
 
 ![Grabación de pantalla 2021-09-22 a la(s) 20 45 56](https://user-images.githubusercontent.com/82186713/134436821-c0736b04-aec7-4629-95cf-3c697a4ae209.gif)
 
-##Se implementaron dependencias como Semantic UI para la construcción de componentes reutilizables y no perder el foco en el css y velar por la funcionalidad del proyecto.
+##Se implementó la dependencia de Semantic UI para la construcción de componentes reutilizables y no perder el foco en el css y velar por la funcionalidad del proyecto.
