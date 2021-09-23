@@ -78,10 +78,11 @@ export const Orders = () => {
         await addDoc(collection(db, "orders").withConverter(orderConverter), new Order(buyer, items, actualDate, totalPrice));
         onSnapshot(collection(db, "orders").withConverter(orderConverter), (querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                setOrderId(doc.id)
-                clear()
+                setOrderId(doc.id);
+                clear();
             });
         });
+        setOrderId("");
     };
 
     return (
