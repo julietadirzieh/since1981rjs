@@ -82,7 +82,6 @@ export const Orders = () => {
                 clear();
             });
         });
-        setOrderId("");
     };
 
     return (
