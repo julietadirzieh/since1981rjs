@@ -37,8 +37,14 @@ export const CartProvider = ({ children }) => {
         return acc + (item.price * item.quantity);
     }, 0);
 
+    const realStock = (item) => {
+        const itemFound = cart.find((e) => item.id === e.id);
+        if (itemFound) return item.stock - itemFound.quantity;
+        return item.stock;
+      };
+
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, clear, totalQuantity, totalPrice }}>
+        <CartContext.Provider value={{ cart, addItem, removeItem, clear, totalQuantity, totalPrice, realStock }}>
             {children}
         </CartContext.Provider>
     );

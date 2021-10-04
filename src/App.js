@@ -1,6 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { CartProvider } from './Context/CartContext';
 
 import { NavBar } from "./components/NavBar/NavBar";
 import { Home } from "./views/Home/Home";
@@ -13,8 +15,6 @@ import { Footer } from "./components/Footer/Footer";
 import { cart } from "./views/cart/cart";
 import { order } from "./views/order/order";
 import { Error404 } from "./views/Error404/Error404";
-
-import { CartProvider } from './Context/CartContext';
 
 const App = () => {
   return (

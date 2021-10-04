@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import "./Orders.css";
+import { Link } from 'react-router-dom';
 import { db } from "../../firebase"
 import { collection, addDoc, onSnapshot, Timestamp } from "firebase/firestore";
-import { Message, Button } from 'semantic-ui-react';
 import { useCartContext } from '../../Context/CartContext';
+import { Message, Button } from 'semantic-ui-react';
 
 export const Orders = () => {
 

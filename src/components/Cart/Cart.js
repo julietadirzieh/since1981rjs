@@ -1,8 +1,8 @@
 import React from "react";
 import "./Cart.css";
-import { Message, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import { useCartContext } from '../../Context/CartContext';
+import { Link } from 'react-router-dom';
+import { Message, Button } from 'semantic-ui-react';
 
 export const Cart = () => {
 

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Message, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 import "./ItemDetail.css";
-import { ItemCount } from '../ItemCount/ItemCount';
 import { useCartContext } from '../../Context/CartContext';
+import { Link } from 'react-router-dom';
+import { Message, Button } from 'semantic-ui-react';
+import { ItemCount } from '../ItemCount/ItemCount';
 
 export function ItemDetail({ item }) {
 
     const [added, setAdded] = useState(false);
 
-    const { addItem, removeItem, clear } = useCartContext();
+    const { addItem, removeItem, clear, realStock } = useCartContext();
 
     const onAdd = (quantityToAdd) => {
         addItem(item, quantityToAdd);
@@ -35,7 +35,7 @@ export function ItemDetail({ item }) {
                             <Message.Item>Variantes: {item.designs}.</Message.Item>
                         </Message.List>
                         <Message>$ {item.price} el metro.</Message>
-                        <ItemCount stock={item.stock} initial={1} onAdd={onAdd} />
+                        <ItemCount stock={realStock(item)} initial={1} onAdd={onAdd} />
                         {added ? (
                             <Message
                                 success

@@ -1,9 +1,7 @@
 import React from 'react';
-
+import "./Item.css";
 import { Link } from 'react-router-dom';
 import { Card, Image } from 'semantic-ui-react';
-
-import "./Item.css";
 
 export const Item = ({ item }) => {
   return (

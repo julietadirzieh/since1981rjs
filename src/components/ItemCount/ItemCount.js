@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react';
 
 export function ItemCount({ stock, initial, onAdd }) {
 
-    const [count, setCount] = useState(initial);
+    const [count, setCount] = useState((stock > 0) ? initial : 0);
 
     const handleIncrement = () => {
         if (count < stock) {
@@ -20,8 +20,10 @@ export function ItemCount({ stock, initial, onAdd }) {
 
     const onAddClick = () => {
         onAdd(count);
-        setCount(1);
-    }
+        if (stock > 0) {
+            setCount(1);
+          } else setCount(0);
+    };
 
     return (
         <div className="ItemCounter">
